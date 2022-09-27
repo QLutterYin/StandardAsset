@@ -1,8 +1,8 @@
 {
     "app_name": "XVBA",
-    "description": "",
-    "author": "",
-    "email": "",
+    "description": "This project is an excel add-in used to automate Standard Asset",
+    "author": "Qi Lutter-Yin",
+    "email": "qlu@andbricks.com",
     "create_ate": "Tue Sep 27 2022 13:21:57 GMT+0200 (Mitteleuropäische Sommerzeit)",
     "excel_file": "Vorlage.xlsx",
     "vba_folder": "vba-files",

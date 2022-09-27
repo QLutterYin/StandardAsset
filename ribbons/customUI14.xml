@@ -1,29 +1,28 @@
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
   <ribbon startFromScratch="false">
     <tabs>
-      <tab id = "standard_asset" label = "Standard Asset">
-        <group id = "group1" label = "Export">
-          <button id = "g1_button1" label = "Export/Update IC Pres" imageMso = "MicrosoftPowerPoint" onAction = "ProcessRibbon"/>
-          <button id = "g1_button2" label = "Export Bank Book Pres" imageMso = "MicrosoftPowerPoint" onAction = "ProcessRibbon"/>
-          <button id = "g1_button3" label = "Update Bank Book Pres" imageMso = "MicrosoftPowerPoint" onAction = "ProcessRibbon"/>
+      <tab id="standard_asset" label="Standard Asset">
+        <group id="group1" label="Export">
+          <button id="g1_button1" label="Export/Update IC Pres" imageMso="MicrosoftPowerPoint" onAction="ProcessRibbon" />
+          <button id="g1_button2" label="Export Bank Book Pres" imageMso="MicrosoftPowerPoint" onAction="ProcessRibbon" />
+          <button id="g1_button3" label="Update Bank Book Pres" imageMso="MicrosoftPowerPoint" onAction="ProcessRibbon" />
         </group>
-        
-        <group id = "group2" label = "One Pager">
-          <button id = "g2_button1" label =  "Export One Pager" imageMso = "O" onAction = "ProcessRibbon"/>
-          <button id = "g2_button2" label = "Export POP Only" imageMso = "P" onAction = "ProcessRibbon"/>
+
+        <group id="group2" label="One Pager">
+          <button id="g2_button1" label="Export One Pager" imageMso="O" onAction="ProcessRibbon" />
+          <button id="g2_button2" label="Export POP Only" imageMso="P" onAction="ProcessRibbon" />
         </group>
-        
-        <group id = "group3" label = "create data tables">
-          <button id = "g3_button1" label =  "Create Sensi Tables" imageMso= "WhatIfAnalysisMenu" onAction = "ProcessRibbon"/>
+
+        <group id="group3" label="create data tables">
+          <button id="g3_button1" label="Create Sensi Tables" imageMso="WhatIfAnalysisMenu" onAction="ProcessRibbon" />
         </group>
-        
-        <group id = "group4" label = "Extend inputs">
-          <button id = "g4_button1" label =  "Import Rentroll" imageMso = "_1" onAction = "ProcessRibbon"/>
-          <button id = "g4_button2" label =  "Extend Model" imageMso = "_2" onAction = "ProcessRibbon"/>
-          <button id = "g4_button3" label =  "Extend Rentroll" imageMso = "TableRowsInsertWord" onAction = "ProcessRibbon"/>
+
+        <group id="group4" label="Extend inputs">
+          <button id="g4_button1" label="Import Rentroll" imageMso="_1" onAction="ProcessRibbon" />
+          <button id="g4_button2" label="Extend Model" imageMso="_2" onAction="ProcessRibbon" />
+          <button id="g4_button3" label="Extend Rentroll" imageMso="TableRowsInsertWord" onAction="ProcessRibbon" />
         </group>
       </tab>
     </tabs>
   </ribbon>
 </customUI>
-

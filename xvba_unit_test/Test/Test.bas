@@ -7,7 +7,7 @@ Attribute VB_Name = "Test"
 'File on xvba_unit_test wil export o Excel/Access just on production
 '*/
 Public Sub test()
-
- MsgBox "Test files"
-
+    ' MsgBox "Test files"
+    Xdebug.printx("Test")
+    debug.print("Test")
 End Sub

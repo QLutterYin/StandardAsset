@@ -2,9 +2,9 @@ Attribute VB_Name = "Export"
 Option Explicit
 
 Sub ExcelRangeToPowerPoint()
-    
+
     Call beforeMacro
-    
+
     Dim sourceRng As Range
     Dim ppt As Object
     Dim slide As Object
@@ -15,54 +15,54 @@ Sub ExcelRangeToPowerPoint()
     Dim parentName As String, chartName As String
     Dim tmp, key
     Dim paragrahpNum As Integer
-    
+
     Set ppt = get_PPT()
-    
+
     If ppt Is Nothing Then Exit Sub
-    
-'    Application.Visible = False
-        
-    ' replace the graphics and text in the ppt
-    For Each slide In ppt.slides
-    
-        ' replace the graphics in the ppt
-        Call updateSlide(slide, createMappingGraphics())
-        
-        ' modify the text in the ppt
-        Call updateSlideText(slide, createMappingText())
-    Next
-    
-    ' modify the values of a table in ppt
-    For Each shp In ppt.slides(3).Shapes
-        If shp.Name = "Tbl KeyFacts" Then
-            With shp.Table
-                For i = 1 To 6
-                    .cell(2, 1).Shape.TextFrame.TextRange.Paragraphs(i) = _
-                    CStr(Sheets("OV").Range("M12").Offset(i - 1, 0).Value)
-                Next
-            End With
-            Exit For
-        End If
-    Next
-    
-    'Clear The Clipboard
-     Application.CutCopyMode = False
-     
-     ' tell the user that the export is finished.
-     MsgBox "Export to PPT is finished."
-'     Application.Visible = True
-     
-     Call afterMacro
+
+        '    Application.Visible = False
+
+        ' replace the graphics and text in the ppt
+        For Each slide In ppt.slides
+
+            ' replace the graphics in the ppt
+            Call updateSlide(slide, createMappingGraphics())
+
+            ' modify the text in the ppt
+            Call updateSlideText(slide, createMappingText())
+            Next
+
+            ' modify the values of a table in ppt
+            For Each shp In ppt.slides(3).Shapes
+                If shp.Name = "Tbl KeyFacts" Then
+                    With shp.Table
+                        For i = 1 To 6
+                            .cell(2, 1).Shape.TextFrame.TextRange.Paragraphs(i) = _
+                            CStr(Sheets("OV").Range("M12").Offset(i - 1, 0).Value)
+                            Next
+                        End With
+                        Exit For
+                    End If
+                    Next
+
+                    'Clear The Clipboard
+                    Application.CutCopyMode = False
+
+                    ' tell the user that the export is finished.
+                    MsgBox "Export to PPT is finished."
+                    '     Application.Visible = True
+
+                    Call afterMacro
 End Sub
 
 
 Private Function createMappingGraphics() As Object
 
-' This dictionary defines the mapping between PPT pictures and their source charts in the excel.
+    ' This dictionary defines the mapping between PPT pictures and their source charts in the excel.
 
     Dim dict As Object
     Set dict = CreateObject("Scripting.Dictionary")
-    
+
     ' adding items to the dictionary
     dict.Add key:="Sources", Item:="SU!B6:H9"
     dict.Add key:="Uses", Item:="SU!I6:K21"
@@ -77,23 +77,23 @@ Private Function createMappingGraphics() As Object
     dict.Add key:="TenantMix", Item:="TT!B7:J23"
     dict.Add key:="AssetList", Item:="AL!B6:Z111"
 
-    
+
     ' THe items for charts should follow the syntax "worksheetname!Chart xxx"
     dict.Add key:="Grafik GEO", Item:="PD!Chart GEO"
     dict.Add key:="Grafik FMCG", Item:="PD!Chart FMCG"
     dict.Add key:="Grafik Strategy", Item:="PD!Chart Strategy"
-    
+
     Set createMappingGraphics = dict
 
 End Function
 
 Private Function createMappingText() As Object
 
-' This dictionary defines the mapping between PPT pictures and their source charts in the excel.
+    ' This dictionary defines the mapping between PPT pictures and their source charts in the excel.
 
     Dim dict As Object
     Set dict = CreateObject("Scripting.Dictionary")
-    
+
     ' The key should be the names of certain shapes in the ppt. If the paragraphs in the shape should be replaced, the key should follow the syntax "shapename-num".
     dict.Add key:="Main Titel", Item:="Project " + Sheets("RR").Range("E7").Value ' The whole text in the shape named "Main Titel" should be replaced with new values.
     dict.Add key:="Portfolio Conformity Analysis incl. Reverse", Item:=Sheets("RR").Range("E7").Value + " " + "Portfolio Conformity Analysis incl. Reverse"
